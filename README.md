@@ -73,4 +73,4 @@ Para rodar este projeto localmente, siga os passos abaixo:
 
 ## Licença
 
-Este projeto está licenciado sob a licença [Nome da Licença, ex: MIT License]. Você pode encontrar os detalhes no arquivo `LICENSE`.
+Este projeto está licenciado sob a licença MIT License. Você pode encontrar os detalhes no arquivo `LICENSE`.
