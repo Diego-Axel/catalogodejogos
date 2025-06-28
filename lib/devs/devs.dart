@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class DevsPage extends StatelessWidget {
+  const DevsPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,7 +35,7 @@ class DevCard extends StatelessWidget {
   final String name;
   final String? githubUrl;
 
-  const DevCard({required this.name, this.githubUrl});
+  const DevCard({super.key, required this.name, this.githubUrl});
 
   @override
   Widget build(BuildContext context) {

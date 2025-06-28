@@ -10,7 +10,7 @@ class CategoryScroller extends StatefulWidget {
   final String title;
   final String ordering;
 
-  const CategoryScroller({
+  const CategoryScroller({super.key, 
     required this.title,
     required this.ordering,
   });
@@ -21,7 +21,7 @@ class CategoryScroller extends StatefulWidget {
 
 class _CategoryScrollerState extends State<CategoryScroller> {
   final String apiKey = 'feb59574ca2e46c49cce18fc9f2b25b4';
-  List<Game> _games = [];
+  final List<Game> _games = [];
   int _page = 1;
   bool _isLoading = false;
   final ScrollController _scrollController = ScrollController();

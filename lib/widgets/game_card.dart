@@ -5,7 +5,7 @@ class GameCard extends StatelessWidget {
   final Game game;
   final VoidCallback? onTap;
 
-  const GameCard({required this.game, this.onTap});
+  const GameCard({super.key, required this.game, this.onTap});
 
   @override
   Widget build(BuildContext context) {

@@ -8,8 +8,11 @@ import '../models/game.dart';
 import '../widgets/game_card.dart';
 import 'category_scroller.dart';
 import 'auto_scroll_row.dart';
+import 'game_detail.dart';
 
 class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
   @override
   _HomePageState createState() => _HomePageState();
 }
@@ -19,6 +22,21 @@ class _HomePageState extends State<HomePage> {
   final TextEditingController _searchController = TextEditingController();
   List<Game> searchResults = [];
   bool searchNotFound = false;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _searchController.addListener(() {
+      if (_searchController.text.isEmpty) {
+        setState(() {
+          searchResults = [];
+          searchNotFound = false;
+        });
+      }
+    });
+  }
+
 
   Future<void> searchGame(String query) async {
     final url = Uri.parse(
@@ -94,7 +112,18 @@ class _HomePageState extends State<HomePage> {
                   Text("Resultados da busca:",
                       style: TextStyle(color: Colors.green, fontSize: 18)),
                   SizedBox(height: 10),
-                  ...searchResults.map((game) => GameCard(game: game)),
+                    ...searchResults.map(
+                      (game) => InkWell(
+                        onTap: () { Navigator.push(
+                          context, MaterialPageRoute(
+                            builder: (_) => GameDetailPage(game: game),
+          ),
+         );
+    },
+    child: GameCard(game: game),
+  ),
+  ),
+
                 ],
               )
             : searchNotFound
@@ -118,4 +147,10 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+  @override
+void dispose() {
+  _searchController.dispose();
+  super.dispose();
+}
+
 }

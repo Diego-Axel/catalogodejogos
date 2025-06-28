@@ -7,7 +7,7 @@ import '../models/game.dart';
 class GameDetailPage extends StatefulWidget {
   final Game game;
 
-  const GameDetailPage({required this.game});
+  const GameDetailPage({super.key, required this.game});
 
   @override
   State<GameDetailPage> createState() => _GameDetailPageState();

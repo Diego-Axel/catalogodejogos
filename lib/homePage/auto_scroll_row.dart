@@ -10,7 +10,7 @@ class AutoScrollRow extends StatefulWidget {
   final String title;
   final String ordering;
 
-  const AutoScrollRow({
+  const AutoScrollRow({super.key, 
     required this.title,
     required this.ordering,
   });
