@@ -8,6 +8,7 @@ import '../widgets/game_card.dart';
 import 'category_scroller.dart';
 import 'auto_scroll_row.dart';
 import 'game_detail.dart';
+import 'all_games_page.dart'; // Importe a nova página
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -36,7 +37,6 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-
   Future<void> searchGame(String query) async {
     final url = Uri.parse(
         'https://api.rawg.io/api/games?key=$apiKey&search=$query&page_size=5');
@@ -64,6 +64,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Catálogo de Jogos'),
         actions: [
+          // Removido o botão "Todos os Jogos" daqui para movê-lo para o corpo
         ],
         leading: PopupMenuButton<String>(
           onSelected: (value) {
@@ -112,13 +113,12 @@ class _HomePageState extends State<HomePage> {
                         onTap: () { Navigator.push(
                           context, MaterialPageRoute(
                             builder: (_) => GameDetailPage(game: game),
-          ),
-         );
-    },
-    child: GameCard(game: game),
-  ),
-  ),
-
+                          ),
+                        );
+                      },
+                      child: GameCard(game: game),
+                    ),
+                  ),
                 ],
               )
             : searchNotFound
@@ -133,17 +133,33 @@ class _HomePageState extends State<HomePage> {
                         title: "Mais populares",
                         ordering: "-added",
                       ),
-                      CategoryScroller(
-                        title: "Simulação",
-                        ordering: "-metacritic",
+                      SizedBox(height: 20), // Espaçamento após a categoria "Mais Populares"
+                      Center( // Centraliza o botão
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: Colors.green.shade700, // Cor de fundo do botão
+                            foregroundColor: Colors.white, // Cor do texto do botão
+                            padding: EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+                            textStyle: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => AllGamesPage()),
+                            );
+                          },
+                          child: Text('Todos os Jogos'),
+                        ),
                       ),
+                      SizedBox(height: 20), // Espaçamento após o botão
                     ],
                   ),
       ),
     );
   }
   @override
-void dispose() {
-  _searchController.dispose();
-  super.dispose();
-}}
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+}
