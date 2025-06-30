@@ -64,10 +64,6 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Catálogo de Jogos'),
         actions: [
-          IconButton(
-            icon: Icon(Icons.search),
-            onPressed: () => searchGame(_searchController.text),
-          ),
         ],
         leading: PopupMenuButton<String>(
           onSelected: (value) {
@@ -150,6 +146,4 @@ class _HomePageState extends State<HomePage> {
 void dispose() {
   _searchController.dispose();
   super.dispose();
-}
-
-}
+}}
