@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import '../devs/devs.dart';
 import '../api/api.dart';
 import '../models/game.dart';

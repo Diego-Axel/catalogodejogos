@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-
 import '../models/game.dart';
 import '../widgets/game_card.dart';
 import 'game_detail.dart';
