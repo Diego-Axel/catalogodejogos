@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../models/game.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 
 class GameDetailPage extends StatefulWidget {
   final Game game;
@@ -14,7 +16,7 @@ class GameDetailPage extends StatefulWidget {
 
 class _GameDetailPageState extends State<GameDetailPage> {
   Game? detailedGame;
-  final String apiKey = 'feb59574ca2e46c49cce18fc9f2b25b4';
+  final String apiKey = dotenv.env['RAWG_API_KEY']!; // Modificado
 
   @override
   void initState() {

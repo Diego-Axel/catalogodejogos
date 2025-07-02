@@ -4,6 +4,8 @@ import 'dart:convert';
 import '../models/game.dart';
 import '../widgets/game_card.dart';
 import 'game_detail.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 
 class AllGamesPage extends StatefulWidget {
   const AllGamesPage({super.key});
@@ -13,7 +15,8 @@ class AllGamesPage extends StatefulWidget {
 }
 
 class _AllGamesPageState extends State<AllGamesPage> {
-  final String apiKey = 'feb59574ca2e46c49cce18fc9f2b25b4';
+  // A chave API agora é carregada do arquivo .env
+  final String apiKey = dotenv.env['RAWG_API_KEY']!; // Modificado
   final List<Game> _allGames = [];
   int _page = 1;
   bool _isLoading = false;

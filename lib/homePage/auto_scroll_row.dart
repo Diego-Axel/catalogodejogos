@@ -4,6 +4,8 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import '../models/game.dart';
 import '../widgets/game_card.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 
 class AutoScrollRow extends StatefulWidget {
   final String title;
@@ -19,7 +21,7 @@ class AutoScrollRow extends StatefulWidget {
 }
 
 class _AutoScrollRowState extends State<AutoScrollRow> {
-  final String apiKey = 'feb59574ca2e46c49cce18fc9f2b25b4';
+  final String apiKey = dotenv.env['RAWG_API_KEY']!; // Modificado
   List<Game> games = [];
   ScrollController scrollController = ScrollController();
   Timer? scrollTimer;

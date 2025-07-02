@@ -8,7 +8,9 @@ import '../widgets/game_card.dart';
 import 'category_scroller.dart';
 import 'auto_scroll_row.dart';
 import 'game_detail.dart';
-import 'all_games_page.dart'; // Importe a nova página
+import 'all_games_page.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,7 +20,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final String apiKey = 'feb59574ca2e46c49cce18fc9f2b25b4';
+  // A chave API agora é carregada do arquivo .env
+  final String apiKey = dotenv.env['RAWG_API_KEY']!; // Modificado
   final TextEditingController _searchController = TextEditingController();
   List<Game> searchResults = [];
   bool searchNotFound = false;

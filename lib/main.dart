@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'homePage/homePage.dart';
 
-void main() {
+Future<void> main() async { // Modificado para Future<void> e async
+  await dotenv.load(fileName: ".env"); // Adicionado para carregar o .env
   runApp(const MyApp());
 }
 
