@@ -54,30 +54,61 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center( // Centralizamos o Column diretamente no corpo
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 48.0),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            const SizedBox(height: 24),
+            // Frase de boas-vindas (maior e mais acima)
+            const Center(
+              child: Text(
+                'Seja bem vindo(a)',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 54,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            const SizedBox(height: 32),
             // Título
-            const Text(
-              'Catálogo de Jogos',
-              style: TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.bold,
+            const Center(
+              child: Text(
+                'Catálogo de Jogos',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 40,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+            // Ícone de videogame logo abaixo do título
+            const SizedBox(height: 24),
+            Center(
+              child: Icon(
+                Icons.videogame_asset,
+                size: 80,
                 color: Colors.white,
               ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 32),
             // Botão para entrar no catálogo
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const HomePage()),
-                );
-              },
-              child: const Text('Entrar no Catálogo'),
+            Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const HomePage()),
+                  );
+                },
+                child: const Text('Entrar no Catálogo'),
+              ),
             ),
+            const SizedBox(height: 40),
           ],
         ),
       ),
